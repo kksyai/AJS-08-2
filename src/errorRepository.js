@@ -1,24 +1,12 @@
-const errorRep = new Map;
-class ErrorRepository {
-    constructor(code, description){
-        this.code = code,
-        this.description = description
+export default class ErrorRepository {
+  constructor() {
+    this.data = new Map();
+    this.data.set(923, 'name error');
+    this.data.set(14, 'x error');
+    this.data.set(10001, 'insert data error');
+  }
 
-        errorRep.set(this, {
-            code,
-            description
-        })
-    }
-
-    translate(code){
-        return errorRep.get(code);
-    }
+  translate(code) {
+    return this.data.get(code);
+  }
 }
-
-const err1 = new ErrorRepository(923, 'name error');
-const err2 = new ErrorRepository(14, 'x error');
-const err3 = new ErrorRepository(10001, 'insert data error');
-
-console.log(errorRep);
-console.log(errorRep.has(14)); // falue ???
-//console.log(errorRep.translate(130));
